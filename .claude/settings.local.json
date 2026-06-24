@@ -18,7 +18,10 @@
       "Bash(curl -s http://localhost:3000/)",
       "Bash(git init *)",
       "Bash(git add *)",
-      "Bash(git commit -m 'Initial commit: Legal Lens Next.js 14 website *)"
+      "Bash(git commit -m 'Initial commit: Legal Lens Next.js 14 website *)",
+      "Bash(gh auth *)",
+      "Bash(git remote *)",
+      "Bash(git commit -m 'Update writer bios, photos, and article content to match Claude Design *)"
     ]
   }
 }

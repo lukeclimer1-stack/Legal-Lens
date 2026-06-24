@@ -41,7 +41,7 @@ export default function ApplyCTA() {
           lineHeight: 1.6,
         }}
       >
-        Legal Lens is always looking for passionate student writers to contribute original analysis and commentary on legal issues that matter.
+        Legal Lens is a space for curious student writers. If you want to research, write, and explain the law to a wider audience, we'd love to hear from you.
       </p>
       <a
         href="https://docs.google.com/forms/d/e/1FAIpQLSdNe05PaTE2yzZXatyDwhMHH1Ag2skePh8w8wQyt5Wxcr5rzg/viewform"

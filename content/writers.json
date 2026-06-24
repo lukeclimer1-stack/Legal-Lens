@@ -2,41 +2,41 @@
   {
     "name": "Luke Wilson",
     "slug": "luke-wilson",
-    "school": "UCLA — Political Science",
-    "fields": "Criminal Law · Constitutional Law · Civil Rights",
-    "bio": "Founder and Editor-in-Chief of Legal Lens. UCLA College Scholars honors student on a pre-law track, former student board member for West Contra Costa USD and Contra Costa COE, and Social Policy Sector Leader at the Bruin Undergraduate Policy Review Club.",
-    "photo": ""
+    "school": "University of California, Los Angeles",
+    "fields": "Criminal Law · Civil / Tort Law · Family Law",
+    "bio": "Founder and Editor-in-Chief of Legal Lens. Luke is an undergraduate studying Political Science at UCLA on a pre-law track, driven by a passion for advocacy, education, and empathy. He leads a team of student writers through the full publication process, from first draft to final piece.",
+    "photo": "/uploads/luke-src.jpg"
   },
   {
     "name": "Skyler Dias",
     "slug": "skyler-dias",
-    "school": "UCLA",
-    "fields": "Constitutional Law",
-    "bio": "Contributing writer focused on constitutional interpretation and civil liberties.",
-    "photo": ""
+    "school": "Contra Costa College",
+    "fields": "Criminal Law · Real Estate Law",
+    "bio": "Skyler Dias is a history student at Contra Costa College with a deep interest in law and the American legal system. He has studied more Supreme Court cases than books read in his lifetime. Outside the classroom, he can be found running or eating out with friends.",
+    "photo": "/uploads/Skyler Diad - Legal Lens Updated Headshot.PNG"
   },
   {
     "name": "Veen Saleh",
     "slug": "veen-saleh",
-    "school": "UCLA",
-    "fields": "Environmental Law · Policy",
-    "bio": "Contributing writer covering environmental law and regulatory policy.",
-    "photo": ""
-  },
-  {
-    "name": "Camrynn Manento",
-    "slug": "camrynn-manento",
-    "school": "UCLA",
-    "fields": "Family Law · Civil Law",
-    "bio": "Contributing writer focused on family law and civil litigation.",
-    "photo": ""
+    "school": "University of California, Los Angeles",
+    "fields": "Business & Corporate Law · Environmental Law · Employment Law",
+    "bio": "Veen Saleh is a first-year student at UCLA pursuing a path toward law, with a strong interest in environmental advocacy and sustainability. As a first-generation American and college student, she writes and researches on environmental challenges and equitable, sustainable solutions, drawing on public policy as a tool for change.",
+    "photo": "/uploads/Veen Saleh Headshot for Legal Lens.jpg"
   },
   {
     "name": "Anatalio Ubalde",
     "slug": "anatalio-ubalde",
-    "school": "UCLA",
-    "fields": "Technology Law · Civil Rights",
-    "bio": "Contributing writer covering technology law and digital civil rights.",
-    "photo": ""
+    "school": "Claremont McKenna College",
+    "fields": "Intellectual Property Law · Environmental Law · Healthcare Law",
+    "bio": "Anatalio Ubalde is a public policy student at Claremont McKenna College. He writes and researches on housing affordability, community development, and the sociopolitical forces shaping Latinx youth. His work is rooted in West Oakland, where he co-founded a youth-run nonprofit serving unhoused neighbors.",
+    "photo": "/uploads/Talio Ubalde Headshot - Talio Ubalde.png"
+  },
+  {
+    "name": "Camrynn Manento",
+    "slug": "camrynn-manento",
+    "school": "University of California, Los Angeles",
+    "fields": "Criminal Law · Immigration Law",
+    "bio": "Camrynn is a Political Science undergraduate at UCLA with a minor in Public Affairs. She is drawn to the intersections of law and society, with a particular focus on criminal and immigration law. Her writing aims to make complex legal issues in her field engaging, accessible, and meaningful.",
+    "photo": "/uploads/Camrynn Manento - Legal Lens Pic.jpeg"
   }
 ]
