@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Luke Wilson",
+    "slug": "luke-wilson",
+    "school": "UCLA — Political Science",
+    "fields": "Criminal Law · Constitutional Law · Civil Rights",
+    "bio": "Founder and Editor-in-Chief of Legal Lens. UCLA College Scholars honors student on a pre-law track, former student board member for West Contra Costa USD and Contra Costa COE, and Social Policy Sector Leader at the Bruin Undergraduate Policy Review Club.",
+    "photo": ""
+  },
+  {
+    "name": "Skyler Dias",
+    "slug": "skyler-dias",
+    "school": "UCLA",
+    "fields": "Constitutional Law",
+    "bio": "Contributing writer focused on constitutional interpretation and civil liberties.",
+    "photo": ""
+  },
+  {
+    "name": "Veen Saleh",
+    "slug": "veen-saleh",
+    "school": "UCLA",
+    "fields": "Environmental Law · Policy",
+    "bio": "Contributing writer covering environmental law and regulatory policy.",
+    "photo": ""
+  },
+  {
+    "name": "Camrynn Manento",
+    "slug": "camrynn-manento",
+    "school": "UCLA",
+    "fields": "Family Law · Civil Law",
+    "bio": "Contributing writer focused on family law and civil litigation.",
+    "photo": ""
+  },
+  {
+    "name": "Anatalio Ubalde",
+    "slug": "anatalio-ubalde",
+    "school": "UCLA",
+    "fields": "Technology Law · Civil Rights",
+    "bio": "Contributing writer covering technology law and digital civil rights.",
+    "photo": ""
+  }
+]

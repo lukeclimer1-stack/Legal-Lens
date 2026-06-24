@@ -1,0 +1,35 @@
+[
+  {
+    "slug": "birthright-citizenship-trump-v-barbara",
+    "title": "Does the Fourteenth Amendment Permit Birthright Citizenship: Trump v. Barbara",
+    "category": "Constitutional Law",
+    "author": "Skyler Dias",
+    "date": "2 days ago",
+    "image": "https://static.wixstatic.com/media/31eb6e_6342fd0a31e44b8798b67b87a3fdd8e7~mv2.jpg/v1/fill/w_900,h_640,al_c,q_85,enc_auto/file.jpg",
+    "excerpt": "A close reading of the Citizenship Clause and what the case could mean for how the Fourteenth Amendment is interpreted today.",
+    "pullQuote": "The text of the Citizenship Clause has not changed since 1868—what changes is who we are willing to read it to include.",
+    "body": "<p>The Fourteenth Amendment opens with one of the most consequential sentences in American law: that all persons born or naturalized in the United States, and subject to its jurisdiction, are citizens. For more than a century that language has been read broadly. Trump v. Barbara asks the Court to revisit what \"subject to the jurisdiction thereof\" was originally understood to mean.</p><p>To understand the stakes, it helps to return to the ratification debates and to United States v. Wong Kim Ark, the 1898 decision that has anchored birthright citizenship ever since. The petitioners argue that the clause was never meant to extend automatically to the children of those without lawful status; the respondents counter that the historical record points the other way.</p><p>This piece is sample text so you can see how a full article reads on the new site. Replace it with the real essay—your headings, paragraphs, and pull quotes will all carry this same styling.</p><p>However the case is resolved, it is a reminder that constitutional text and constitutional meaning are not the same thing, and that the distance between them is where the most important legal arguments live.</p>"
+  },
+  {
+    "slug": "why-environmental-law-matters",
+    "title": "Why Environmental Law Matters More Than Ever",
+    "category": "Environmental Law",
+    "author": "Veen Saleh",
+    "date": "Jun 2",
+    "image": "https://static.wixstatic.com/media/31eb6e_35c0be4e52854f87a52d63ed84affb3b~mv2.jpg/v1/fill/w_900,h_640,al_c,q_85,enc_auto/file.jpg",
+    "excerpt": "As climate pressure mounts, environmental law has moved from the margins to the center of public policy.",
+    "pullQuote": "",
+    "body": "<p>Environmental law was once a niche corner of the legal world. Today it sits at the intersection of public health, economics, and basic questions of equity—who bears the cost of pollution, and who gets a say in the decisions that create it.</p><p>This is sample article text. Paste the real essay here and it will inherit the same clean, readable styling.</p><p>The throughline is that environmental policy is rarely just about the environment. It is about how a society distributes risk, and the law is the instrument we use to make those choices visible.</p>"
+  },
+  {
+    "slug": "geofence-warrants-fourth-amendment",
+    "title": "Do Geofence Warrants Violate the Fourth Amendment?",
+    "category": "Fourth Amendment",
+    "author": "Luke Wilson",
+    "date": "May 26",
+    "image": "",
+    "excerpt": "Geofence warrants let police ask who was near a crime scene. The Fourth Amendment was not written with that question in mind.",
+    "pullQuote": "",
+    "body": "<p>A geofence warrant flips the usual logic of a search. Instead of naming a suspect and asking for their data, it draws a circle on a map and asks a company who was inside it. That inversion is exactly what makes these warrants constitutionally difficult.</p><p>This is sample article text—replace it with the real piece in the editor.</p><p>The deeper question is whether a warrant that begins with a place rather than a person can ever satisfy the particularity the Fourth Amendment demands.</p>"
+  }
+]

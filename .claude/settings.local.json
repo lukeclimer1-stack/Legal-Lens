@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@14 . --typescript --tailwind --app --no-eslint --no-src-dir --import-alias \"@/*\" --yes)",
+      "Read(//Users/lukewilson/Desktop/**)",
+      "Bash(npx create-next-app@14 legal-lens --typescript --tailwind --app --no-eslint --no-src-dir --import-alias \"@/*\" --yes)",
+      "Bash(cp -r /Users/lukewilson/Desktop/legal-lens/. \"/Users/lukewilson/Desktop/Legal Lens Website/\")",
+      "Bash(rm -rf /Users/lukewilson/Desktop/legal-lens)",
+      "Bash(cd \"/Users/lukewilson/Desktop/Legal Lens Website\" && mkdir -p content components lib public/uploads app/about app/blog/\\\\[slug\\\\] app/writers app/admin app/api/articles)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(node -e \"require\\('/Users/lukewilson/Desktop/Legal Lens Website/node_modules/next/dist/server/require-hook'\\)\")",
+      "Bash(node node_modules/next/dist/bin/next build)",
+      "Bash(echo \"PID: $!\")",
+      "Bash(curl -s http://localhost:3099/)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(kill 56977 56988)",
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit -m 'Initial commit: Legal Lens Next.js 14 website *)"
+    ]
+  }
+}

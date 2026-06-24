@@ -1,101 +1,69 @@
-import Image from "next/image";
+import { getArticles } from '@/lib/articles'
+import LeadStory from '@/components/LeadStory'
+import ArticleCard from '@/components/ArticleCard'
+import MissionStrip from '@/components/MissionStrip'
+import ApplyCTA from '@/components/ApplyCTA'
+import Link from 'next/link'
 
-export default function Home() {
+export default async function HomePage() {
+  const articles = await getArticles()
+  const lead = articles[0]
+  const recent = articles.slice(1, 3)
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      <div style={{ maxWidth: '1080px', margin: '0 auto', padding: '44px 28px' }} className="home-container">
+        {lead && <LeadStory article={lead} />}
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        {/* Recent Writing */}
+        <div>
+          <p
+            style={{
+              fontFamily: '"Courier New", Courier, monospace',
+              fontSize: '12px',
+              letterSpacing: '3px',
+              color: '#11203b',
+              textTransform: 'uppercase',
+              marginBottom: '24px',
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            Recent Writing
+          </p>
+          <div
+            style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '36px' }}
+            className="recent-grid"
           >
-            Read our docs
-          </a>
+            {recent.map((article) => (
+              <ArticleCard key={article.slug} article={article} />
+            ))}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: '32px' }}>
+            <Link
+              href="/blog"
+              style={{
+                fontFamily: '"Courier New", Courier, monospace',
+                fontSize: '12px',
+                letterSpacing: '2px',
+                color: '#b08a42',
+                textTransform: 'uppercase',
+                textDecoration: 'none',
+              }}
+            >
+              Read the full blog →
+            </Link>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+      </div>
+
+      <MissionStrip />
+      <ApplyCTA />
+
+      <style>{`
+        @media (max-width: 768px) {
+          .home-container { padding: 24px 16px !important; }
+          .recent-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+    </>
+  )
 }
