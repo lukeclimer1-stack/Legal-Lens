@@ -1,0 +1,36 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Uploaded images are committed into this folder of your repo.
+media_folder: "uploads"
+public_folder: "/uploads"
+
+site_url: https://example.netlify.app
+display_url: https://example.netlify.app
+
+collections:
+  - name: "blog"
+    label: "Articles"
+    files:
+      - name: "articles"
+        label: "All Articles"
+        file: "content/articles.json"
+        description: >-
+          Add, edit, reorder, or delete posts here. The FIRST article in the list
+          is the featured (lead) story on the homepage. Drag the handle to reorder.
+        fields:
+          - name: "articles"
+            label: "Articles"
+            label_singular: "Article"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { name: "title", label: "Headline", widget: "string" }
+              - { name: "category", label: "Category", widget: "string", required: false }
+              - { name: "author", label: "Author", widget: "string", required: false }
+              - { name: "date", label: "Date label", widget: "string", required: false, hint: "e.g. Jun 18, or '2 days ago'" }
+              - { name: "image", label: "Image", widget: "image", required: false, hint: "Upload an image, or leave blank for no image" }
+              - { name: "excerpt", label: "Card summary", widget: "text", required: false, hint: "One sentence shown on the preview card" }
+              - { name: "pullQuote", label: "Pull quote", widget: "string", required: false, hint: "Optional highlighted line inside the article" }
+              - { name: "body", label: "Article body", widget: "text", hint: "Leave one blank line between paragraphs" }
