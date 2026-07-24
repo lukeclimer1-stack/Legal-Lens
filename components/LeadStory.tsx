@@ -32,7 +32,7 @@ export default function LeadStory({ article }: { article: Article }) {
                 margin: '0 0 12px 0',
               }}
             >
-              Lead · {formatCategory(article.category)}
+              {formatCategory(article.category)}
             </p>
             <h2
               style={{
