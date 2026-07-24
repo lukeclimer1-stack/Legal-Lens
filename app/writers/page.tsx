@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs'
 import path from 'path'
 import { getSiteConfig } from '@/lib/site-config'
-import WriterPhotoEditor from '@/components/WriterPhotoEditor'
+import { DEFAULT_SITE_CONFIG } from '@/lib/site-config-shared'
 import ScrollReveal from '@/components/ScrollReveal'
 
 interface Writer {
@@ -46,77 +46,101 @@ export default async function WritersPage() {
       </h1>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
-        {writers.map((writer) => (
-          <div
-            key={writer.slug}
-            className="reveal writer-row"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '150px 1fr',
-              gap: '32px',
-              alignItems: 'start',
-              borderBottom: '1px solid #dcd3bf',
-              paddingBottom: '40px',
-            }}
-          >
-            {/* Photo */}
-            {writer.photo && (
-              <WriterPhotoEditor
-                cropKey={CROP_KEY[writer.slug] || writer.slug}
-                photo={writer.photo}
-                name={writer.name}
-                initialConfig={siteConfig}
-              />
-            )}
+        {writers.map((writer) => {
+          const cropKey = CROP_KEY[writer.slug] || writer.slug
+          const crop = siteConfig.writers[cropKey] || DEFAULT_SITE_CONFIG.writers[cropKey]
+          return (
+            <div
+              key={writer.slug}
+              className="reveal writer-row"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '150px 1fr',
+                gap: '32px',
+                alignItems: 'start',
+                borderBottom: '1px solid #dcd3bf',
+                paddingBottom: '40px',
+              }}
+            >
+              {/* Photo */}
+              {writer.photo && (
+                <div
+                  style={{
+                    width: '150px',
+                    height: '180px',
+                    background: '#e8e2d4',
+                    border: '1px solid #d8cfb9',
+                    overflow: 'hidden',
+                    position: 'relative',
+                  }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={writer.photo}
+                    alt={writer.name}
+                    style={{
+                      position: 'absolute',
+                      left: crop.cropX + 'px',
+                      top: crop.cropY + 'px',
+                      width: crop.zoom * 100 + '%',
+                      height: 'auto',
+                      maxWidth: 'none',
+                      display: 'block',
+                      filter: `brightness(${crop.bright}) contrast(1.18) saturate(1.02)`,
+                    }}
+                  />
+                </div>
+              )}
 
-            {/* Info */}
-            <div>
-              <h3
-                style={{
-                  fontSize: '26px',
-                  color: '#11203b',
-                  fontFamily: '"Times New Roman", Times, serif',
-                  fontWeight: 'bold',
-                  margin: '0 0 6px 0',
-                }}
-              >
-                {writer.name}
-              </h3>
-              <p
-                style={{
-                  fontFamily: '"Courier New", Courier, monospace',
-                  fontSize: '11px',
-                  letterSpacing: '1px',
-                  color: '#8a7340',
-                  textTransform: 'uppercase',
-                  marginBottom: '6px',
-                }}
-              >
-                {writer.school}
-              </p>
-              <p
-                style={{
-                  fontSize: '14px',
-                  color: '#b08a42',
-                  fontStyle: 'italic',
-                  marginBottom: '12px',
-                }}
-              >
-                {writer.fields}
-              </p>
-              <p
-                style={{
-                  fontSize: '16px',
-                  lineHeight: 1.7,
-                  color: '#2a3142',
-                  margin: 0,
-                }}
-              >
-                {writer.bio}
-              </p>
+              {/* Info */}
+              <div>
+                <h3
+                  style={{
+                    fontSize: '26px',
+                    color: '#11203b',
+                    fontFamily: '"Times New Roman", Times, serif',
+                    fontWeight: 'bold',
+                    margin: '0 0 6px 0',
+                  }}
+                >
+                  {writer.name}
+                </h3>
+                <p
+                  style={{
+                    fontFamily: '"Courier New", Courier, monospace',
+                    fontSize: '11px',
+                    letterSpacing: '1px',
+                    color: '#8a7340',
+                    textTransform: 'uppercase',
+                    marginBottom: '6px',
+                  }}
+                >
+                  {writer.school}
+                </p>
+                <p
+                  style={{
+                    fontSize: '14px',
+                    color: '#b08a42',
+                    fontStyle: 'italic',
+                    marginBottom: '12px',
+                  }}
+                >
+                  {writer.fields}
+                </p>
+                <p
+                  style={{
+                    fontSize: '16px',
+                    lineHeight: 1.7,
+                    color: '#2a3142',
+                    margin: 0,
+                  }}
+                >
+                  {writer.bio}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
 
       <ScrollReveal />
