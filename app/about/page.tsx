@@ -1,12 +1,14 @@
-import Image from 'next/image'
 import { existsSync } from 'fs'
 import path from 'path'
+import { getSiteConfig } from '@/lib/site-config'
+import AboutPhotoEditor from '@/components/AboutPhotoEditor'
 
-export default function AboutPage() {
+export default async function AboutPage() {
   const photoExists = existsSync(path.join(process.cwd(), 'public/uploads/luke-src.jpg'))
+  const siteConfig = await getSiteConfig()
 
   return (
-    <div style={{ maxWidth: '880px', margin: '0 auto', padding: '50px 28px' }} className="about-container">
+    <div style={{ maxWidth: '880px', margin: '0 auto', padding: '50px 28px' }} className="about-container pagein">
       {/* Top grid */}
       <div
         style={{
@@ -19,26 +21,7 @@ export default function AboutPage() {
         className="about-top"
       >
         {/* Photo */}
-        <div
-          style={{
-            width: '260px',
-            height: '340px',
-            backgroundColor: '#e8e2d4',
-            border: '1px solid #d8cfb9',
-            overflow: 'hidden',
-            position: 'relative',
-            flexShrink: 0,
-          }}
-        >
-          {photoExists ? (
-            <Image
-              src="/uploads/luke-src.jpg"
-              alt="Luke Wilson"
-              fill
-              style={{ objectFit: 'cover' }}
-            />
-          ) : null}
-        </div>
+        {photoExists && <AboutPhotoEditor initialConfig={siteConfig} />}
 
         {/* Info */}
         <div>
@@ -102,13 +85,17 @@ export default function AboutPage() {
         ))}
       </div>
 
-      <style>{`
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         @media (max-width: 768px) {
           .about-container { padding: 30px 16px !important; }
           .about-top { grid-template-columns: 1fr !important; }
           .about-top > div:first-child { width: 100% !important; max-width: 260px; margin: 0 auto; }
         }
-      `}</style>
+      `,
+        }}
+      />
     </div>
   )
 }

@@ -1,0 +1,10 @@
+{
+  "about": { "cropX": -39.078125, "cropY": -48.2890625, "zoom": 1.3, "bright": 0.8 },
+  "writers": {
+    "luke": { "cropX": -22, "cropY": -41, "zoom": 1.25, "bright": 1.0 },
+    "skyler": { "cropX": -37, "cropY": -10, "zoom": 1.5, "bright": 1.0 },
+    "veen": { "cropX": -10, "cropY": 0, "zoom": 1.1, "bright": 1.0 },
+    "talio": { "cropX": -63, "cropY": -25, "zoom": 1.75, "bright": 1.0 },
+    "camrynn": { "cropX": -43, "cropY": -53, "zoom": 1.55, "bright": 1.0 }
+  }
+}

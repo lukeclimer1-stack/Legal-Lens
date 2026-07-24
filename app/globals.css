@@ -56,3 +56,73 @@ textarea:focus {
     text-wrap: balance;
   }
 }
+
+/* ---------- interactive / motion layer (ported from Legal Lens v2 design) ---------- */
+
+@keyframes ll-ink {
+  from { opacity: 0; filter: blur(4px); }
+  to { opacity: 1; filter: blur(0); }
+}
+@keyframes ll-ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes ll-pagein {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+.mast-letter {
+  display: inline-block;
+  transition: transform 0.28s cubic-bezier(0.2, 0.7, 0.2, 1), color 0.28s ease, text-shadow 0.28s ease;
+}
+.mast-letter:hover {
+  color: #b08a42;
+  transform: translateY(-7px) rotate(-3deg) scale(1.04);
+  text-shadow: 0 14px 18px rgba(17, 32, 59, 0.22);
+}
+
+.tickwrap:hover .tick {
+  animation-play-state: paused;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+.zoomimg {
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.5s ease;
+}
+.article-card:hover .zoomimg,
+.lead-card:hover .zoomimg {
+  transform: scale(1.05);
+  filter: brightness(1.04);
+}
+
+.btn-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(17, 32, 59, 0.18);
+}
+
+.pagein {
+  animation: ll-pagein 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .mast-letter { transition: none; }
+  .tick { animation: none !important; }
+  .pagein { animation: none; }
+  .zoomimg { transition: none; }
+  .article-card:hover .zoomimg,
+  .lead-card:hover .zoomimg { transform: none; }
+}

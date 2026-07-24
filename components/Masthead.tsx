@@ -1,5 +1,7 @@
 import Link from 'next/link'
 
+const LETTERS = ['L', 'E', 'G', 'A', 'L', ' ', 'L', 'E', 'N', 'S']
+
 export default function Masthead() {
   return (
     <div
@@ -39,10 +41,25 @@ export default function Masthead() {
             fontFamily: '"Times New Roman", Times, serif',
             textDecoration: 'none',
             lineHeight: 1.1,
+            whiteSpace: 'nowrap',
           }}
           className="masthead-logo"
         >
-          LEGAL LENS
+          {LETTERS.map((letter, i) =>
+            letter === ' ' ? (
+              <span key={i} style={{ display: 'inline-block' }}>
+                &nbsp;
+              </span>
+            ) : (
+              <span
+                key={i}
+                className="mast-letter"
+                style={{ animation: `ll-ink 0.7s ${(i * 0.05).toFixed(2)}s both` }}
+              >
+                {letter}
+              </span>
+            )
+          )}
         </Link>
         <p
           style={{
@@ -51,6 +68,7 @@ export default function Masthead() {
             color: '#5a6172',
             margin: '8px 0 0 0',
             fontFamily: '"Times New Roman", Times, serif',
+            animation: 'll-ink 0.8s 0.45s both',
           }}
         >
           Clear, accessible, and inclusive analysis of the law

@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 
 const team = [
@@ -28,6 +30,24 @@ const team = [
   },
 ]
 
+function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  e.preventDefault()
+  const f = e.currentTarget
+  const val = (name: string) => {
+    const el = f.elements.namedItem(name) as HTMLInputElement | HTMLTextAreaElement | null
+    return el ? el.value.trim() : ''
+  }
+  const first = val('first-name')
+  const last = val('last-name')
+  const email = val('email')
+  const msg = val('message')
+  const name = `${first} ${last}`.trim()
+  const subject = 'Legal Lens inquiry' + (name ? ` from ${name}` : '')
+  const body = msg + ((name || email) ? `\n\n— ${name}${email ? ` (${email})` : ''}` : '')
+  window.location.href =
+    'mailto:luke.wilson.5565@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body)
+}
+
 export default function Footer() {
   return (
     <footer style={{ backgroundColor: '#0d1a30', color: '#c3c8d2' }}>
@@ -56,28 +76,13 @@ export default function Footer() {
           >
             Get in Touch
           </p>
-          <form
-            data-netlify="true"
-            name="contact"
-            method="POST"
-          >
-            <input type="hidden" name="form-name" value="contact" />
+          <form onSubmit={onSubmit}>
             <div
               style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '12px' }}
               className="name-grid"
             >
-              <input
-                type="text"
-                name="first-name"
-                placeholder="First Name"
-                style={inputStyle}
-              />
-              <input
-                type="text"
-                name="last-name"
-                placeholder="Last Name"
-                style={inputStyle}
-              />
+              <input type="text" name="first-name" placeholder="First Name" style={inputStyle} />
+              <input type="text" name="last-name" placeholder="Last Name" style={inputStyle} />
             </div>
             <input
               type="email"
@@ -93,6 +98,7 @@ export default function Footer() {
             />
             <button
               type="submit"
+              className="btn-lift"
               style={{
                 backgroundColor: '#b08a42',
                 color: '#0d1a30',
@@ -169,6 +175,10 @@ export default function Footer() {
         © 2026 Legal Lens. All rights reserved.{' · '}
         <Link href="/admin" style={{ color: '#6f7d96', textDecoration: 'none' }}>
           Manage Articles
+        </Link>
+        {' · '}
+        <Link href="/manage-website" style={{ color: '#6f7d96', textDecoration: 'none' }}>
+          Manage Website
         </Link>
       </div>
 

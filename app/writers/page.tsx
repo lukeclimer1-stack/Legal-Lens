@@ -1,6 +1,8 @@
 import { promises as fs } from 'fs'
 import path from 'path'
-import Image from 'next/image'
+import { getSiteConfig } from '@/lib/site-config'
+import WriterPhotoEditor from '@/components/WriterPhotoEditor'
+import ScrollReveal from '@/components/ScrollReveal'
 
 interface Writer {
   name: string
@@ -11,6 +13,14 @@ interface Writer {
   photo: string
 }
 
+const CROP_KEY: Record<string, string> = {
+  'luke-wilson': 'luke',
+  'skyler-dias': 'skyler',
+  'veen-saleh': 'veen',
+  'anatalio-ubalde': 'talio',
+  'camrynn-manento': 'camrynn',
+}
+
 async function getWriters(): Promise<Writer[]> {
   const data = await fs.readFile(path.join(process.cwd(), 'content', 'writers.json'), 'utf-8')
   return JSON.parse(data)
@@ -18,9 +28,10 @@ async function getWriters(): Promise<Writer[]> {
 
 export default async function WritersPage() {
   const writers = await getWriters()
+  const siteConfig = await getSiteConfig()
 
   return (
-    <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '50px 28px' }} className="writers-container">
+    <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '50px 28px' }} className="writers-container pagein">
       <h1
         style={{
           fontSize: '40px',
@@ -38,6 +49,7 @@ export default async function WritersPage() {
         {writers.map((writer) => (
           <div
             key={writer.slug}
+            className="reveal writer-row"
             style={{
               display: 'grid',
               gridTemplateColumns: '150px 1fr',
@@ -46,30 +58,16 @@ export default async function WritersPage() {
               borderBottom: '1px solid #dcd3bf',
               paddingBottom: '40px',
             }}
-            className="writer-row"
           >
             {/* Photo */}
-            <div
-              style={{
-                width: '150px',
-                height: '180px',
-                backgroundColor: '#e8e2d4',
-                border: '1px solid #d8cfb9',
-                overflow: 'hidden',
-                position: 'relative',
-                flexShrink: 0,
-              }}
-            >
-              {writer.photo ? (
-                <Image
-                  src={writer.photo}
-                  alt={writer.name}
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  unoptimized
-                />
-              ) : null}
-            </div>
+            {writer.photo && (
+              <WriterPhotoEditor
+                cropKey={CROP_KEY[writer.slug] || writer.slug}
+                photo={writer.photo}
+                name={writer.name}
+                initialConfig={siteConfig}
+              />
+            )}
 
             {/* Info */}
             <div>
@@ -121,13 +119,19 @@ export default async function WritersPage() {
         ))}
       </div>
 
-      <style>{`
+      <ScrollReveal />
+
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         @media (max-width: 768px) {
           .writers-container { padding: 30px 16px !important; }
           .writer-row { grid-template-columns: 1fr !important; }
           .writer-row > div:first-child { width: 100% !important; max-width: 150px; }
         }
-      `}</style>
+      `,
+        }}
+      />
     </div>
   )
 }

@@ -1,13 +1,13 @@
 export default function ApplyCTA() {
   return (
     <section
+      className="reveal apply-section"
       style={{
         maxWidth: '1080px',
         margin: '0 auto',
         padding: '56px 28px',
         textAlign: 'center',
       }}
-      className="apply-section"
     >
       <p
         style={{
@@ -47,6 +47,7 @@ export default function ApplyCTA() {
         href="https://docs.google.com/forms/d/e/1FAIpQLSdNe05PaTE2yzZXatyDwhMHH1Ag2skePh8w8wQyt5Wxcr5rzg/viewform"
         target="_blank"
         rel="noopener noreferrer"
+        className="btn-lift"
         style={{
           display: 'inline-block',
           backgroundColor: '#11203b',

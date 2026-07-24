@@ -3,6 +3,8 @@ import './globals.css'
 import Masthead from '@/components/Masthead'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
+import DocketTicker from '@/components/DocketTicker'
+import { SiteAuthProvider } from '@/components/SiteAuthProvider'
 
 export const metadata: Metadata = {
   title: 'Legal Lens',
@@ -17,10 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Masthead />
-        <Nav />
-        <main>{children}</main>
-        <Footer />
+        <SiteAuthProvider>
+          <Masthead />
+          <Nav />
+          <DocketTicker />
+          <main>{children}</main>
+          <Footer />
+        </SiteAuthProvider>
       </body>
     </html>
   )

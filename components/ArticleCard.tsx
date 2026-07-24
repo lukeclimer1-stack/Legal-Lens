@@ -1,18 +1,36 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
-import { Article } from '@/lib/articles'
+import type { Article } from '@/lib/articles'
+import { formatCategory, cropPosition } from '@/lib/format'
 
 interface Props {
   article: Article
   showExcerpt?: boolean
+  reveal?: boolean
 }
 
-export default function ArticleCard({ article, showExcerpt = false }: Props) {
+export default function ArticleCard({ article, showExcerpt = false, reveal = true }: Props) {
+  function onMouseMove(e: React.MouseEvent<HTMLAnchorElement>) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const el = e.currentTarget
+    const r = el.getBoundingClientRect()
+    const x = (e.clientX - r.left) / r.width - 0.5
+    const y = (e.clientY - r.top) / r.height - 0.5
+    el.style.transform = `perspective(900px) rotateY(${(x * 5).toFixed(2)}deg) rotateX(${(-y * 5).toFixed(2)}deg) translateY(-3px)`
+  }
+  function onMouseLeave(e: React.MouseEvent<HTMLAnchorElement>) {
+    e.currentTarget.style.transform = ''
+  }
+
   return (
     <Link
       href={`/blog/${article.slug}`}
       style={{ textDecoration: 'none', display: 'block' }}
-      className="article-card"
+      className={`article-card${reveal ? ' reveal' : ''}`}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
     >
       {/* Image area */}
       <div
@@ -30,7 +48,8 @@ export default function ArticleCard({ article, showExcerpt = false }: Props) {
             src={article.image}
             alt={article.title}
             fill
-            style={{ objectFit: 'cover' }}
+            className="zoomimg"
+            style={{ objectFit: 'cover', objectPosition: cropPosition(article.imageCrop) }}
             unoptimized
           />
         ) : (
@@ -60,7 +79,7 @@ export default function ArticleCard({ article, showExcerpt = false }: Props) {
           margin: '0 0 6px 0',
         }}
       >
-        {article.category}
+        {formatCategory(article.category)}
       </p>
       <h3
         style={{
@@ -99,7 +118,6 @@ export default function ArticleCard({ article, showExcerpt = false }: Props) {
       </p>
       <style>{`
         .article-card { transition: transform 150ms ease; }
-        .article-card:hover { transform: translateY(-3px); }
         .article-card:hover .card-title { color: #b08a42; }
       `}</style>
     </Link>

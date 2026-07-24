@@ -11,13 +11,15 @@ export interface Article {
   excerpt: string
   pullQuote: string
   body: string
+  imageCrop?: { x: number; y: number }
 }
 
 const filePath = path.join(process.cwd(), 'content', 'articles.json')
 
 export async function getArticles(): Promise<Article[]> {
   const data = await fs.readFile(filePath, 'utf-8')
-  return JSON.parse(data)
+  const parsed = JSON.parse(data)
+  return Array.isArray(parsed) ? parsed : parsed.articles || []
 }
 
 export async function getArticleBySlug(slug: string): Promise<Article | undefined> {
@@ -26,5 +28,5 @@ export async function getArticleBySlug(slug: string): Promise<Article | undefine
 }
 
 export async function writeArticles(articles: Article[]): Promise<void> {
-  await fs.writeFile(filePath, JSON.stringify(articles, null, 2))
+  await fs.writeFile(filePath, JSON.stringify({ articles }, null, 2))
 }
