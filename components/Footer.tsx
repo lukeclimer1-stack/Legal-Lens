@@ -1,7 +1,5 @@
 'use client'
 
-import Link from 'next/link'
-
 const team = [
   {
     name: 'Luke Wilson',
@@ -172,14 +170,7 @@ export default function Footer() {
           color: '#6f7d96',
         }}
       >
-        © 2026 Legal Lens. All rights reserved.{' · '}
-        <Link href="/admin" style={{ color: '#6f7d96', textDecoration: 'none' }}>
-          Manage Articles
-        </Link>
-        {' · '}
-        <Link href="/manage-website" style={{ color: '#6f7d96', textDecoration: 'none' }}>
-          Manage Website
-        </Link>
+        © 2026 Legal Lens. All rights reserved.
       </div>
 
       <style>{`

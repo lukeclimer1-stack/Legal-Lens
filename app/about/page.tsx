@@ -1,11 +1,11 @@
 import { existsSync } from 'fs'
 import path from 'path'
 import { getSiteConfig } from '@/lib/site-config'
-import AboutPhotoEditor from '@/components/AboutPhotoEditor'
 
 export default async function AboutPage() {
   const photoExists = existsSync(path.join(process.cwd(), 'public/uploads/luke-src.jpg'))
   const siteConfig = await getSiteConfig()
+  const crop = siteConfig.about
 
   return (
     <div style={{ maxWidth: '880px', margin: '0 auto', padding: '50px 28px' }} className="about-container pagein">
@@ -21,7 +21,34 @@ export default async function AboutPage() {
         className="about-top"
       >
         {/* Photo */}
-        {photoExists && <AboutPhotoEditor initialConfig={siteConfig} />}
+        {photoExists && (
+          <div
+            style={{
+              width: '260px',
+              height: '340px',
+              background: '#e8e2d4',
+              border: '1px solid #d8cfb9',
+              overflow: 'hidden',
+              position: 'relative',
+            }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/uploads/luke-src.jpg"
+              alt="Luke Wilson"
+              style={{
+                position: 'absolute',
+                left: crop.cropX + 'px',
+                top: crop.cropY + 'px',
+                width: crop.zoom * 100 + '%',
+                height: 'auto',
+                maxWidth: 'none',
+                display: 'block',
+                filter: `brightness(${crop.bright}) contrast(1.18) saturate(1.02)`,
+              }}
+            />
+          </div>
+        )}
 
         {/* Info */}
         <div>
