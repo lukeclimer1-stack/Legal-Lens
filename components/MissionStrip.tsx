@@ -4,21 +4,24 @@ export default function MissionStrip() {
       numeral: 'i.',
       title: 'Transparency',
       body: 'We offer unbiased analysis of real cases and policies—without a hidden agenda.',
+      delay: '0s',
     },
     {
       numeral: 'ii.',
       title: 'Accessibility',
       body: 'Taking the complexity out of the law to make it understandable for everyone.',
+      delay: '.12s',
     },
     {
       numeral: 'iii.',
       title: 'Community',
       body: 'A shared platform for insights on the forces shaping our world.',
+      delay: '.24s',
     },
   ]
 
   return (
-    <section style={{ backgroundColor: '#11203b', color: '#f1ecdf', width: '100%' }}>
+    <section className="reveal" style={{ backgroundColor: '#11203b', color: '#f1ecdf', width: '100%' }}>
       <div
         style={{ maxWidth: '1080px', margin: '0 auto', padding: '54px 28px' }}
         className="mission-inner"
@@ -44,7 +47,7 @@ export default function MissionStrip() {
           className="pillars-grid"
         >
           {pillars.map((p) => (
-            <div key={p.numeral}>
+            <div key={p.numeral} className="reveal" style={{ transitionDelay: p.delay }}>
               <p
                 style={{
                   fontSize: '30px',

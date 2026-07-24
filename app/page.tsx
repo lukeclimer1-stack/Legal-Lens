@@ -3,6 +3,7 @@ import LeadStory from '@/components/LeadStory'
 import ArticleCard from '@/components/ArticleCard'
 import MissionStrip from '@/components/MissionStrip'
 import ApplyCTA from '@/components/ApplyCTA'
+import ScrollReveal from '@/components/ScrollReveal'
 import Link from 'next/link'
 
 export default async function HomePage() {
@@ -12,7 +13,10 @@ export default async function HomePage() {
 
   return (
     <>
-      <div style={{ maxWidth: '1080px', margin: '0 auto', padding: '44px 28px' }} className="home-container">
+      <div
+        style={{ maxWidth: '1080px', margin: '0 auto', padding: '44px 28px' }}
+        className="home-container pagein"
+      >
         {lead && <LeadStory article={lead} />}
 
         {/* Recent Writing */}
@@ -57,6 +61,7 @@ export default async function HomePage() {
 
       <MissionStrip />
       <ApplyCTA />
+      <ScrollReveal />
 
       <style>{`
         @media (max-width: 768px) {

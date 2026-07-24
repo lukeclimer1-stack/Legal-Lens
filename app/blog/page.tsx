@@ -1,11 +1,12 @@
 import { getArticles } from '@/lib/articles'
 import ArticleCard from '@/components/ArticleCard'
+import ScrollReveal from '@/components/ScrollReveal'
 
 export default async function BlogPage() {
   const articles = await getArticles()
 
   return (
-    <div style={{ maxWidth: '1080px', margin: '0 auto', padding: '50px 28px' }} className="blog-container">
+    <div style={{ maxWidth: '1080px', margin: '0 auto', padding: '50px 28px' }} className="blog-container pagein">
       <h1
         style={{
           fontSize: '40px',
@@ -38,6 +39,8 @@ export default async function BlogPage() {
           <ArticleCard key={article.slug} article={article} showExcerpt />
         ))}
       </div>
+
+      <ScrollReveal />
 
       <style>{`
         @media (max-width: 768px) {

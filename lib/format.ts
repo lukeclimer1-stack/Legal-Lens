@@ -1,0 +1,14 @@
+// Pure display-formatting helpers with no Node built-ins, safe to import from client components.
+
+export function formatCategory(category: string): string {
+  return String(category || '')
+    .split(/[,|]/)
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .join(' · ')
+}
+
+export function cropPosition(crop?: { x: number; y: number }): string {
+  if (!crop || crop.x == null || crop.y == null) return '50% 50%'
+  return `${crop.x}% ${crop.y}%`
+}
