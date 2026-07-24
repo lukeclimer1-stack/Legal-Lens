@@ -1,12 +1,11 @@
 import Link from 'next/link'
 import { getArticles } from '@/lib/articles'
-import { formatCategory } from '@/lib/format'
 
 export default async function DocketTicker() {
   const articles = await getArticles()
   const items = articles.map((a) => ({
     slug: a.slug,
-    label: (formatCategory(a.category) ? formatCategory(a.category) + ' — ' : '') + a.title,
+    label: a.title,
   }))
   const looped = items.concat(items)
 
