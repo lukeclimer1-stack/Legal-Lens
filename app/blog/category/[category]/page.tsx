@@ -1,13 +1,50 @@
-import { getArticles } from '@/lib/articles'
+import Link from 'next/link'
+import { notFound } from 'next/navigation'
+import { getAllCategories, getArticlesByCategorySlug } from '@/lib/categories'
 import ArticleCard from '@/components/ArticleCard'
 import ScrollReveal from '@/components/ScrollReveal'
-import CategoryChips from '@/components/CategoryChips'
 
-export default async function BlogPage() {
-  const articles = await getArticles()
+export async function generateStaticParams() {
+  const categories = await getAllCategories()
+  return categories.map((c) => ({ category: c.slug }))
+}
+
+export default async function CategoryPage({ params }: { params: { category: string } }) {
+  const result = await getArticlesByCategorySlug(params.category)
+  if (!result) notFound()
+  const { name, articles } = result
 
   return (
     <div style={{ maxWidth: '1080px', margin: '0 auto', padding: '50px 28px' }} className="blog-container pagein">
+      <Link
+        href="/blog"
+        style={{
+          fontFamily: '"Courier New", Courier, monospace',
+          fontSize: '11px',
+          letterSpacing: '2px',
+          color: '#b08a42',
+          textTransform: 'uppercase',
+          textDecoration: 'none',
+          display: 'inline-block',
+          marginBottom: '26px',
+        }}
+      >
+        ← Back to the blog
+      </Link>
+
+      <p
+        style={{
+          fontFamily: '"Courier New", Courier, monospace',
+          fontSize: '11px',
+          letterSpacing: '2px',
+          color: '#b08a42',
+          textTransform: 'uppercase',
+          textAlign: 'center',
+          marginBottom: '10px',
+        }}
+      >
+        Category
+      </p>
       <h1
         style={{
           fontSize: '40px',
@@ -18,7 +55,7 @@ export default async function BlogPage() {
           margin: '0 0 10px 0',
         }}
       >
-        The Blog
+        {name}
       </h1>
       <p
         style={{
@@ -29,7 +66,7 @@ export default async function BlogPage() {
           marginBottom: '44px',
         }}
       >
-        Analysis of cases, policy, and the questions that shape the law.
+        {articles.length} {articles.length === 1 ? 'article' : 'articles'} filed under {name}.
       </p>
 
       <div
@@ -40,8 +77,6 @@ export default async function BlogPage() {
           <ArticleCard key={article.slug} article={article} showExcerpt />
         ))}
       </div>
-
-      <CategoryChips />
 
       <ScrollReveal />
 
