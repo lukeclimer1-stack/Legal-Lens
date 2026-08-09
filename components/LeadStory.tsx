@@ -85,7 +85,7 @@ export default function LeadStory({ article }: { article: Article }) {
                 alt={article.title}
                 fill
                 className="zoomimg"
-                style={{ objectFit: 'cover', objectPosition: cropPosition(article.imageCrop) }}
+                style={{ objectFit: article.imageFit || 'cover', objectPosition: cropPosition(article.imageCrop) }}
                 unoptimized
               />
             )}
