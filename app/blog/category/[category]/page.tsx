@@ -52,22 +52,11 @@ export default async function CategoryPage({ params }: { params: { category: str
           fontFamily: '"Times New Roman", Times, serif',
           fontWeight: 'bold',
           textAlign: 'center',
-          margin: '0 0 10px 0',
+          margin: '0 0 44px 0',
         }}
       >
         {name}
       </h1>
-      <p
-        style={{
-          fontStyle: 'italic',
-          fontSize: '16px',
-          color: '#5a6172',
-          textAlign: 'center',
-          marginBottom: '44px',
-        }}
-      >
-        {articles.length} {articles.length === 1 ? 'article' : 'articles'} filed under {name}.
-      </p>
 
       <div
         style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', rowGap: '38px', columnGap: '36px' }}
