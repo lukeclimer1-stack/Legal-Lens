@@ -12,6 +12,8 @@ export interface Article {
   pullQuote: string
   body: string
   imageCrop?: { x: number; y: number }
+  /** 'contain' shows the whole photo letterboxed instead of cropping it to fill the frame. Defaults to 'cover'. */
+  imageFit?: 'cover' | 'contain'
 }
 
 const filePath = path.join(process.cwd(), 'content', 'articles.json')

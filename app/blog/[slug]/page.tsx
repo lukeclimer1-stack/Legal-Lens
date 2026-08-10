@@ -93,7 +93,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
               src={article.image}
               alt={article.title}
               fill
-              style={{ objectFit: 'cover', objectPosition: cropPosition(article.imageCrop) }}
+              style={{ objectFit: article.imageFit || 'cover', objectPosition: cropPosition(article.imageCrop) }}
               unoptimized
             />
           ) : (

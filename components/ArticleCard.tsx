@@ -49,7 +49,7 @@ export default function ArticleCard({ article, showExcerpt = false, reveal = tru
             alt={article.title}
             fill
             className="zoomimg"
-            style={{ objectFit: 'cover', objectPosition: cropPosition(article.imageCrop) }}
+            style={{ objectFit: article.imageFit || 'cover', objectPosition: cropPosition(article.imageCrop) }}
             unoptimized
           />
         ) : (

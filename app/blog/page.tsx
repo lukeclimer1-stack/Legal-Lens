@@ -1,6 +1,7 @@
 import { getArticles } from '@/lib/articles'
 import ArticleCard from '@/components/ArticleCard'
 import ScrollReveal from '@/components/ScrollReveal'
+import CategoryChips from '@/components/CategoryChips'
 
 export default async function BlogPage() {
   const articles = await getArticles()
@@ -39,6 +40,8 @@ export default async function BlogPage() {
           <ArticleCard key={article.slug} article={article} showExcerpt />
         ))}
       </div>
+
+      <CategoryChips />
 
       <ScrollReveal />
 
