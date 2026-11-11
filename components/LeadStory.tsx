@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Article } from '@/lib/articles'
-import { formatCategory, cropPosition } from '@/lib/format'
+import { formatCategory, cropPosition, formatDate } from '@/lib/format'
 
 export default function LeadStory({ article }: { article: Article }) {
   return (
@@ -65,7 +65,7 @@ export default function LeadStory({ article }: { article: Article }) {
                 margin: 0,
               }}
             >
-              By {article.author} · {article.date}
+              By {article.author} · {formatDate(article.date)}
             </p>
           </div>
 

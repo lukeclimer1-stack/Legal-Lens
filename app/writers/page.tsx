@@ -3,6 +3,13 @@ import path from 'path'
 import { getSiteConfig } from '@/lib/site-config'
 import { DEFAULT_SITE_CONFIG } from '@/lib/site-config-shared'
 import ScrollReveal from '@/components/ScrollReveal'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Writers',
+  description: 'The student writers behind Legal Lens.',
+  alternates: { canonical: '/writers' },
+}
 
 interface Writer {
   name: string

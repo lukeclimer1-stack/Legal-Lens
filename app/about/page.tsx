@@ -1,9 +1,16 @@
 import { existsSync } from 'fs'
 import path from 'path'
 import { getSiteConfig } from '@/lib/site-config'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'About',
+  description: 'Who runs Legal Lens and why it exists.',
+  alternates: { canonical: '/about' },
+}
 
 export default async function AboutPage() {
-  const photoExists = existsSync(path.join(process.cwd(), 'public/uploads/luke-src.jpg'))
+  const photoExists = existsSync(path.join(process.cwd(), 'public/uploads/luke-wilson.jpg'))
   const siteConfig = await getSiteConfig()
   const crop = siteConfig.about
 
@@ -34,7 +41,7 @@ export default async function AboutPage() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/uploads/luke-src.jpg"
+              src="/uploads/luke-wilson.jpg"
               alt="Luke Wilson"
               style={{
                 position: 'absolute',

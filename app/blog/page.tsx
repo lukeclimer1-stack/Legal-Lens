@@ -2,6 +2,13 @@ import { getArticles } from '@/lib/articles'
 import ArticleCard from '@/components/ArticleCard'
 import ScrollReveal from '@/components/ScrollReveal'
 import CategoryChips from '@/components/CategoryChips'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'The Blog',
+  description: 'Analysis of cases, policy, and the questions that shape the law.',
+  alternates: { canonical: '/blog' },
+}
 
 export default async function BlogPage() {
   const articles = await getArticles()

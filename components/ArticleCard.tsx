@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Article } from '@/lib/articles'
-import { formatCategory, cropPosition } from '@/lib/format'
+import { formatCategory, cropPosition, formatDate } from '@/lib/format'
 
 interface Props {
   article: Article
@@ -114,7 +114,7 @@ export default function ArticleCard({ article, showExcerpt = false, reveal = tru
           margin: 0,
         }}
       >
-        By {article.author} · {article.date}
+        By {article.author} · {formatDate(article.date)}
       </p>
       <style>{`
         .article-card { transition: transform 150ms ease; }
