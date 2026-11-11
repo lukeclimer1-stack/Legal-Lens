@@ -8,6 +8,7 @@ const links = [
   { href: '/about', label: 'About' },
   { href: '/blog', label: 'Blog' },
   { href: '/writers', label: 'Writers' },
+  { href: '/glossary', label: 'Glossary' },
 ]
 
 export default function Nav() {

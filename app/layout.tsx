@@ -4,10 +4,24 @@ import Masthead from '@/components/Masthead'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import DocketTicker from '@/components/DocketTicker'
+import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Legal Lens',
-  description: 'Clear, accessible, and inclusive analysis of the law.',
+  metadataBase: new URL(SITE_URL),
+  // Each page sets its own title, shown as "Page Title | Legal Lens" in browser tabs and search results.
+  title: { default: SITE_NAME, template: `%s | ${SITE_NAME}` },
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    type: 'website',
+    siteName: SITE_NAME,
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    url: '/',
+  },
+  twitter: { card: 'summary', title: SITE_NAME, description: SITE_DESCRIPTION },
+  alternates: {
+    types: { 'application/rss+xml': [{ url: '/feed.xml', title: `${SITE_NAME} articles` }] },
+  },
 }
 
 export default function RootLayout({

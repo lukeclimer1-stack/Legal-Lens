@@ -126,3 +126,102 @@ textarea:focus {
   .article-card:hover .zoomimg,
   .lead-card:hover .zoomimg { transform: none; }
 }
+
+/* ---------- tap-to-define glossary ---------- */
+
+.gloss {
+  border-bottom: 1.5px dotted #b08a42;
+  cursor: help;
+  transition: background-color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.gloss:hover,
+.gloss[aria-expanded='true'] {
+  background-color: rgba(176, 138, 66, 0.16);
+}
+.gloss:focus-visible {
+  outline: 2px solid #b08a42;
+  outline-offset: 2px;
+}
+
+.gloss-card {
+  position: absolute;
+  z-index: 70;
+  background: #fffdf8;
+  border: 1px solid #11203b;
+  border-top: 3px solid #b08a42;
+  box-shadow: 0 14px 30px rgba(17, 32, 59, 0.18);
+  padding: 14px 16px 14px;
+  animation: ll-gloss-in 0.16s ease both;
+}
+@keyframes ll-gloss-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: none; }
+}
+.gloss-card-arrow {
+  position: absolute;
+  top: -9px;
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  background: #b08a42;
+  transform: rotate(45deg);
+  z-index: -1;
+}
+.gloss-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.gloss-card-label {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8a6a2c;
+}
+.gloss-card-close {
+  background: none;
+  border: 0;
+  padding: 0 2px;
+  margin: -6px -4px -6px 0;
+  font-size: 22px;
+  line-height: 1;
+  color: #5a6172;
+  cursor: pointer;
+}
+.gloss-card-close:hover { color: #11203b; }
+.gloss-card-close:focus-visible { outline: 2px solid #b08a42; outline-offset: 2px; }
+.gloss-card-term {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: #11203b;
+  margin: 0 0 6px 0;
+}
+.gloss-card-def {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #2a3142;
+  margin: 0 0 10px 0;
+}
+.gloss-card-link {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8a6a2c;
+}
+.gloss-card-link:hover { color: #11203b; }
+
+.glossary-entry:target {
+  background-color: rgba(176, 138, 66, 0.14);
+  box-shadow: -14px 0 0 rgba(176, 138, 66, 0.14), 14px 0 0 rgba(176, 138, 66, 0.14);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gloss-card { animation: none; }
+  .gloss { transition: none; }
+}

@@ -3,10 +3,21 @@ import { notFound } from 'next/navigation'
 import { getAllCategories, getArticlesByCategorySlug } from '@/lib/categories'
 import ArticleCard from '@/components/ArticleCard'
 import ScrollReveal from '@/components/ScrollReveal'
+import type { Metadata } from 'next'
 
 export async function generateStaticParams() {
   const categories = await getAllCategories()
   return categories.map((c) => ({ category: c.slug }))
+}
+
+export async function generateMetadata({ params }: { params: { category: string } }): Promise<Metadata> {
+  const result = await getArticlesByCategorySlug(params.category)
+  if (!result) return {}
+  return {
+    title: result.name,
+    description: `Legal Lens articles on ${result.name}.`,
+    alternates: { canonical: `/blog/category/${params.category}` },
+  }
 }
 
 export default async function CategoryPage({ params }: { params: { category: string } }) {

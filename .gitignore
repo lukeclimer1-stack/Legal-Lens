@@ -34,3 +34,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local Claude settings (contain paths from the computer they were made on)
+.claude/settings.local.json

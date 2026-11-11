@@ -6,7 +6,12 @@ export interface Article {
   title: string
   category: string
   author: string
+  /** Publication date as "YYYY-MM-DD". Always include the year. */
   date: string
+  /** Optional "YYYY-MM-DD". The date the article's facts were last checked. Defaults to the publication date. */
+  currentAsOf?: string
+  /** Optional short note shown at the top of the article when something has changed since publication. */
+  updateNote?: string
   image: string
   excerpt: string
   pullQuote: string
